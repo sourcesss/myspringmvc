@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cnsuning.spring.start.mapper.StatementOfAccountMapper">
+  <resultMap id="BaseResultMap" type="com.cnsuning.spring.start.entity.StatementOfAccount">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_no" jdbcType="VARCHAR" property="userNo" />
+    <result column="out_order_no" jdbcType="VARCHAR" property="outOrderNo" />
+    <result column="soa_yw_status" jdbcType="VARCHAR" property="soaYwStatus" />
+    <result column="yw_trade_type" jdbcType="VARCHAR" property="ywTradeType" />
+    <result column="yw_trade_scene" jdbcType="VARCHAR" property="ywTradeScene" />
+    <result column="yw_time" jdbcType="TIMESTAMP" property="ywTime" />
+    <result column="yw_req_id" jdbcType="VARCHAR" property="ywReqId" />
+    <result column="fmpms_update_time" jdbcType="TIMESTAMP" property="fmpmsUpdateTime" />
+    <result column="soa_zw_status" jdbcType="VARCHAR" property="soaZwStatus" />
+    <result column="zw_trade_type" jdbcType="VARCHAR" property="zwTradeType" />
+    <result column="zw_trade_scene" jdbcType="VARCHAR" property="zwTradeScene" />
+    <result column="zw_trandate" jdbcType="TIMESTAMP" property="zwTrandate" />
+    <result column="zw_serialno" jdbcType="VARCHAR" property="zwSerialno" />
+    <result column="zw_totalvalue" jdbcType="INTEGER" property="zwTotalvalue" />
+    <result column="fmpms_exchange_time" jdbcType="TIMESTAMP" property="fmpmsExchangeTime" />
+    <result column="consume_points_num" jdbcType="INTEGER" property="consumePointsNum" />
+    <result column="deal_time" jdbcType="TIMESTAMP" property="dealTime" />
+    <result column="load_time" jdbcType="TIMESTAMP" property="loadTime" />
+    <result column="yw_deal_status" jdbcType="VARCHAR" property="ywDealStatus" />
+    <result column="yw_deal_type" jdbcType="VARCHAR" property="ywDealType" />
+    <result column="yw_deal_points_num" jdbcType="INTEGER" property="ywDealPointsNum" />
+    <result column="zw_deal_status" jdbcType="VARCHAR" property="zwDealStatus" />
+    <result column="zw_deal_type" jdbcType="VARCHAR" property="zwDealType" />
+    <result column="zw_deal_points_num" jdbcType="INTEGER" property="zwDealPointsNum" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_no, out_order_no, soa_yw_status, yw_trade_type, yw_trade_scene, yw_time, 
+    yw_req_id, fmpms_update_time, soa_zw_status, zw_trade_type, zw_trade_scene, zw_trandate, 
+    zw_serialno, zw_totalvalue, fmpms_exchange_time, consume_points_num, deal_time, load_time, 
+    yw_deal_status, yw_deal_type, yw_deal_points_num, zw_deal_status, zw_deal_type, zw_deal_points_num, 
+    remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from statement_of_account
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from statement_of_account
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.cnsuning.spring.start.entity.StatementOfAccount">
+    insert into statement_of_account (id, user_no, out_order_no, 
+      soa_yw_status, yw_trade_type, yw_trade_scene, 
+      yw_time, yw_req_id, fmpms_update_time, 
+      soa_zw_status, zw_trade_type, zw_trade_scene, 
+      zw_trandate, zw_serialno, zw_totalvalue, 
+      fmpms_exchange_time, consume_points_num, 
+      deal_time, load_time, yw_deal_status, 
+      yw_deal_type, yw_deal_points_num, zw_deal_status, 
+      zw_deal_type, zw_deal_points_num, remark
+      )
+    values (#{id,jdbcType=BIGINT}, #{userNo,jdbcType=VARCHAR}, #{outOrderNo,jdbcType=VARCHAR}, 
+      #{soaYwStatus,jdbcType=VARCHAR}, #{ywTradeType,jdbcType=VARCHAR}, #{ywTradeScene,jdbcType=VARCHAR}, 
+      #{ywTime,jdbcType=TIMESTAMP}, #{ywReqId,jdbcType=VARCHAR}, #{fmpmsUpdateTime,jdbcType=TIMESTAMP}, 
+      #{soaZwStatus,jdbcType=VARCHAR}, #{zwTradeType,jdbcType=VARCHAR}, #{zwTradeScene,jdbcType=VARCHAR}, 
+      #{zwTrandate,jdbcType=TIMESTAMP}, #{zwSerialno,jdbcType=VARCHAR}, #{zwTotalvalue,jdbcType=INTEGER}, 
+      #{fmpmsExchangeTime,jdbcType=TIMESTAMP}, #{consumePointsNum,jdbcType=INTEGER}, 
+      #{dealTime,jdbcType=TIMESTAMP}, #{loadTime,jdbcType=TIMESTAMP}, #{ywDealStatus,jdbcType=VARCHAR}, 
+      #{ywDealType,jdbcType=VARCHAR}, #{ywDealPointsNum,jdbcType=INTEGER}, #{zwDealStatus,jdbcType=VARCHAR}, 
+      #{zwDealType,jdbcType=VARCHAR}, #{zwDealPointsNum,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cnsuning.spring.start.entity.StatementOfAccount">
+    insert into statement_of_account
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userNo != null">
+        user_no,
+      </if>
+      <if test="outOrderNo != null">
+        out_order_no,
+      </if>
+      <if test="soaYwStatus != null">
+        soa_yw_status,
+      </if>
+      <if test="ywTradeType != null">
+        yw_trade_type,
+      </if>
+      <if test="ywTradeScene != null">
+        yw_trade_scene,
+      </if>
+      <if test="ywTime != null">
+        yw_time,
+      </if>
+      <if test="ywReqId != null">
+        yw_req_id,
+      </if>
+      <if test="fmpmsUpdateTime != null">
+        fmpms_update_time,
+      </if>
+      <if test="soaZwStatus != null">
+        soa_zw_status,
+      </if>
+      <if test="zwTradeType != null">
+        zw_trade_type,
+      </if>
+      <if test="zwTradeScene != null">
+        zw_trade_scene,
+      </if>
+      <if test="zwTrandate != null">
+        zw_trandate,
+      </if>
+      <if test="zwSerialno != null">
+        zw_serialno,
+      </if>
+      <if test="zwTotalvalue != null">
+        zw_totalvalue,
+      </if>
+      <if test="fmpmsExchangeTime != null">
+        fmpms_exchange_time,
+      </if>
+      <if test="consumePointsNum != null">
+        consume_points_num,
+      </if>
+      <if test="dealTime != null">
+        deal_time,
+      </if>
+      <if test="loadTime != null">
+        load_time,
+      </if>
+      <if test="ywDealStatus != null">
+        yw_deal_status,
+      </if>
+      <if test="ywDealType != null">
+        yw_deal_type,
+      </if>
+      <if test="ywDealPointsNum != null">
+        yw_deal_points_num,
+      </if>
+      <if test="zwDealStatus != null">
+        zw_deal_status,
+      </if>
+      <if test="zwDealType != null">
+        zw_deal_type,
+      </if>
+      <if test="zwDealPointsNum != null">
+        zw_deal_points_num,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userNo != null">
+        #{userNo,jdbcType=VARCHAR},
+      </if>
+      <if test="outOrderNo != null">
+        #{outOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="soaYwStatus != null">
+        #{soaYwStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="ywTradeType != null">
+        #{ywTradeType,jdbcType=VARCHAR},
+      </if>
+      <if test="ywTradeScene != null">
+        #{ywTradeScene,jdbcType=VARCHAR},
+      </if>
+      <if test="ywTime != null">
+        #{ywTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ywReqId != null">
+        #{ywReqId,jdbcType=VARCHAR},
+      </if>
+      <if test="fmpmsUpdateTime != null">
+        #{fmpmsUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="soaZwStatus != null">
+        #{soaZwStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="zwTradeType != null">
+        #{zwTradeType,jdbcType=VARCHAR},
+      </if>
+      <if test="zwTradeScene != null">
+        #{zwTradeScene,jdbcType=VARCHAR},
+      </if>
+      <if test="zwTrandate != null">
+        #{zwTrandate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zwSerialno != null">
+        #{zwSerialno,jdbcType=VARCHAR},
+      </if>
+      <if test="zwTotalvalue != null">
+        #{zwTotalvalue,jdbcType=INTEGER},
+      </if>
+      <if test="fmpmsExchangeTime != null">
+        #{fmpmsExchangeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="consumePointsNum != null">
+        #{consumePointsNum,jdbcType=INTEGER},
+      </if>
+      <if test="dealTime != null">
+        #{dealTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loadTime != null">
+        #{loadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ywDealStatus != null">
+        #{ywDealStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="ywDealType != null">
+        #{ywDealType,jdbcType=VARCHAR},
+      </if>
+      <if test="ywDealPointsNum != null">
+        #{ywDealPointsNum,jdbcType=INTEGER},
+      </if>
+      <if test="zwDealStatus != null">
+        #{zwDealStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="zwDealType != null">
+        #{zwDealType,jdbcType=VARCHAR},
+      </if>
+      <if test="zwDealPointsNum != null">
+        #{zwDealPointsNum,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cnsuning.spring.start.entity.StatementOfAccount">
+    update statement_of_account
+    <set>
+      <if test="userNo != null">
+        user_no = #{userNo,jdbcType=VARCHAR},
+      </if>
+      <if test="outOrderNo != null">
+        out_order_no = #{outOrderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="soaYwStatus != null">
+        soa_yw_status = #{soaYwStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="ywTradeType != null">
+        yw_trade_type = #{ywTradeType,jdbcType=VARCHAR},
+      </if>
+      <if test="ywTradeScene != null">
+        yw_trade_scene = #{ywTradeScene,jdbcType=VARCHAR},
+      </if>
+      <if test="ywTime != null">
+        yw_time = #{ywTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ywReqId != null">
+        yw_req_id = #{ywReqId,jdbcType=VARCHAR},
+      </if>
+      <if test="fmpmsUpdateTime != null">
+        fmpms_update_time = #{fmpmsUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="soaZwStatus != null">
+        soa_zw_status = #{soaZwStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="zwTradeType != null">
+        zw_trade_type = #{zwTradeType,jdbcType=VARCHAR},
+      </if>
+      <if test="zwTradeScene != null">
+        zw_trade_scene = #{zwTradeScene,jdbcType=VARCHAR},
+      </if>
+      <if test="zwTrandate != null">
+        zw_trandate = #{zwTrandate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zwSerialno != null">
+        zw_serialno = #{zwSerialno,jdbcType=VARCHAR},
+      </if>
+      <if test="zwTotalvalue != null">
+        zw_totalvalue = #{zwTotalvalue,jdbcType=INTEGER},
+      </if>
+      <if test="fmpmsExchangeTime != null">
+        fmpms_exchange_time = #{fmpmsExchangeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="consumePointsNum != null">
+        consume_points_num = #{consumePointsNum,jdbcType=INTEGER},
+      </if>
+      <if test="dealTime != null">
+        deal_time = #{dealTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loadTime != null">
+        load_time = #{loadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ywDealStatus != null">
+        yw_deal_status = #{ywDealStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="ywDealType != null">
+        yw_deal_type = #{ywDealType,jdbcType=VARCHAR},
+      </if>
+      <if test="ywDealPointsNum != null">
+        yw_deal_points_num = #{ywDealPointsNum,jdbcType=INTEGER},
+      </if>
+      <if test="zwDealStatus != null">
+        zw_deal_status = #{zwDealStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="zwDealType != null">
+        zw_deal_type = #{zwDealType,jdbcType=VARCHAR},
+      </if>
+      <if test="zwDealPointsNum != null">
+        zw_deal_points_num = #{zwDealPointsNum,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cnsuning.spring.start.entity.StatementOfAccount">
+    update statement_of_account
+    set user_no = #{userNo,jdbcType=VARCHAR},
+      out_order_no = #{outOrderNo,jdbcType=VARCHAR},
+      soa_yw_status = #{soaYwStatus,jdbcType=VARCHAR},
+      yw_trade_type = #{ywTradeType,jdbcType=VARCHAR},
+      yw_trade_scene = #{ywTradeScene,jdbcType=VARCHAR},
+      yw_time = #{ywTime,jdbcType=TIMESTAMP},
+      yw_req_id = #{ywReqId,jdbcType=VARCHAR},
+      fmpms_update_time = #{fmpmsUpdateTime,jdbcType=TIMESTAMP},
+      soa_zw_status = #{soaZwStatus,jdbcType=VARCHAR},
+      zw_trade_type = #{zwTradeType,jdbcType=VARCHAR},
+      zw_trade_scene = #{zwTradeScene,jdbcType=VARCHAR},
+      zw_trandate = #{zwTrandate,jdbcType=TIMESTAMP},
+      zw_serialno = #{zwSerialno,jdbcType=VARCHAR},
+      zw_totalvalue = #{zwTotalvalue,jdbcType=INTEGER},
+      fmpms_exchange_time = #{fmpmsExchangeTime,jdbcType=TIMESTAMP},
+      consume_points_num = #{consumePointsNum,jdbcType=INTEGER},
+      deal_time = #{dealTime,jdbcType=TIMESTAMP},
+      load_time = #{loadTime,jdbcType=TIMESTAMP},
+      yw_deal_status = #{ywDealStatus,jdbcType=VARCHAR},
+      yw_deal_type = #{ywDealType,jdbcType=VARCHAR},
+      yw_deal_points_num = #{ywDealPointsNum,jdbcType=INTEGER},
+      zw_deal_status = #{zwDealStatus,jdbcType=VARCHAR},
+      zw_deal_type = #{zwDealType,jdbcType=VARCHAR},
+      zw_deal_points_num = #{zwDealPointsNum,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
